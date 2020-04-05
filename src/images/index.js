@@ -4,6 +4,8 @@ import male_hosp from './male/hospitalized.png'
 import female_cured from './female/cured.png'
 import female_dead from './female/dead.png'
 import female_hosp from './female/hospitalized.png'
+import csv_data from './female/us-counties.csv'
+import csv_data_states from './female/us-states.csv'
 
 import abroad from './filter/abroad.png'
 import state from './filter/state.png'
@@ -15,9 +17,6 @@ import city_node from './nodes/city.png'
 import plane_abroad_node from './nodes/plane.png'
 import plane_local_node from './nodes/plane_local.png'
 
-import csv_data from './csv_data/us-counties.csv'
-import csv_states_data from './csv_data/us-states.csv'
-
 export {
   male_cured,
   male_dead,
@@ -26,6 +25,7 @@ export {
   female_dead,
   female_hosp,
   csv_data,
+  csv_data_states,
   state,
   city,
   state_node,

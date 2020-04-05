@@ -1,7 +1,10 @@
-import React from "react";
+import React , {useEffect} from "react";
 import { geoCentroid } from "d3-geo";
-import {
-  ComposableMap,
+import { useSelector, useDispatch } from 'react-redux';
+import { scaleQuantile } from "d3-scale";
+import { csv } from "d3-fetch";
+import  {csv_states_data}  from "../images/index";
+import {ComposableMap,
   Geographies,
   Geography,
   Marker,
@@ -32,7 +35,7 @@ useEffect(() => {
 
   }, []);
 
-  const colorScale = scaleQuantile()
+const colorScale = scaleQuantile()
   .domain(data.map(d => d.cases))
   .range([
     "#ffedea",
@@ -47,7 +50,7 @@ useEffect(() => {
   ]);
 
 
-const MapChart = () => {
+const Map3 = () => {
   return (
     <ComposableMap projection="geoAlbersUsa">
       <Geographies geography={geoUrl}>
@@ -97,4 +100,4 @@ const MapChart = () => {
   );
 };
 
-export default MapChart;
+export default Map3;
