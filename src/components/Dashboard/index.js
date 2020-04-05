@@ -18,17 +18,18 @@ const Container = styled.div`
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-columns: 5% 25% 70%;
-
+  grid-template-columns: 75% 5%;
+X 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
     grid-template-rows: 50% 10% 40%;
   }
 `
 
-const Dashboard = () => {
+const Clusters = () => {
   return (
-    <Provider store={store}>
+    
+      <div class="content">
       <Container>
         {isMobile && (
           <NoSSR>
@@ -38,19 +39,21 @@ const Dashboard = () => {
             />
           </NoSSR>
         )}
-        <FilterPanel />
-        <SidePanel />
+        
         {isBrowser && (
           <NoSSR>
             <NetworkMap
-              height={isMobile ? '50%' : '100%'}
+              height={isMobile ? '50%' : '99%'}
               width={isMobile ? '100%' : '70%'}
             />
           </NoSSR>
         )}
+        <FilterPanel />
+        {/* <SidePanel /> */}
+      
       </Container>
-    </Provider>
+      </div>
   )
 }
 
-export default Dashboard
+export default Clusters

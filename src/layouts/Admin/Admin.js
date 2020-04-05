@@ -127,26 +127,26 @@ class Admin extends React.Component {
             ref="mainPanel"
             data={this.state.backgroundColor}
           >
-            <AdminNavbar
+            {/* <AdminNavbar
               {...this.props}
               brandText={this.getBrandText(this.props.location.pathname)}
               toggleSidebar={this.toggleSidebar}
               sidebarOpened={this.state.sidebarOpened}
-            />
+            /> */}
             <Switch>
               {this.getRoutes(routes)}
               <Redirect from="*" to="/admin/dashboard"/>
             </Switch>
-            {// we don't want the Footer to be rendered on map page
+            {/* {// we don't want the Footer to be rendered on map page
             this.props.location.pathname.indexOf("maps") !== -1 ? null : (
               <Footer fluid />
-            )}
+            )} */}
           </div>
         </div>
-        <FixedPlugin
+        {/* <FixedPlugin
           bgColor={this.state.backgroundColor}
           handleBgClick={this.handleBgClick}
-        />
+        /> */}
       </>
     );
   }

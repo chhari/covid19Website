@@ -73,7 +73,7 @@ const NetworkMap = ({
         scale: 1.5,
         offset: { x: 0, y: 0 },
         animation: {
-          duration: 500,
+          duration: 200,
           easingFunction: 'easeInCubic',
         },
       }
@@ -101,12 +101,12 @@ const NetworkMap = ({
       hierarchical: false,
     },
     edges: {
-      color: '#000000',
+      color: '#ffffff',
     },
     nodes: {
       chosen: {
         node: (values, id, selected, hovering) => {
-          values.color = selected ? '#000' : 'green'
+          values.color = selected ? '#fff' : 'green'
         },
       },
     },

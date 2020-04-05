@@ -15,6 +15,9 @@ import city_node from './nodes/city.png'
 import plane_abroad_node from './nodes/plane.png'
 import plane_local_node from './nodes/plane_local.png'
 
+import csv_data from './csv_data/us-counties.csv'
+import csv_states_data from './csv_data/us-states.csv'
+
 export {
   male_cured,
   male_dead,
@@ -22,6 +25,7 @@ export {
   female_cured,
   female_dead,
   female_hosp,
+  csv_data,
   state,
   city,
   state_node,

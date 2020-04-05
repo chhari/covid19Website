@@ -18,8 +18,11 @@
 import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
+import { connect } from 'react-redux';
+import {runCountryWiseData, runWorldData} from '../redux/countries/countriesAction'
 // react plugin used to create charts
 import { Line, Bar } from "react-chartjs-2";
+import Map from "./Map"
 
 // reactstrap components
 import {
@@ -57,15 +60,80 @@ class Dashboard extends React.Component {
       bigChartData: "data1"
     };
   }
+
+  componentDidMount(){
+    this.props.runWorldReq();
+    this.props.runCountryWiseReq();
+  }
+  
   setBgChartData = name => {
     this.setState({
       bigChartData: name
     });
   };
+
   render() {
     return (
       <>
         <div className="content">
+        <Row>
+            <Col lg="4">
+              <Card className="card-chart">
+                <CardHeader>
+                  <h5 className="card-category">Covid19 Cases worldwide </h5>
+                  <CardTitle tag="h3">
+                    <i className="tim-icons icon-bell-55 text-info" />{" "}
+                    {this.props.resWorld.cases}
+                  </CardTitle>
+                </CardHeader>
+                {/* <CardBody>
+                  <div className="chart-area">
+                    <Line
+                      data={chartExample2.data}
+                      options={chartExample2.options}
+                    />
+                  </div>
+                </CardBody> */}
+              </Card>
+            </Col>
+            <Col lg="4">
+              <Card className="card-chart">
+                <CardHeader>
+                  <h5 className="card-category">Cases Recovered</h5>
+                  <CardTitle tag="h3">
+                    <i className="tim-icons icon-delivery-fast text-primary" />{" "}
+                    {this.props.resWorld.recovered}
+                  </CardTitle>
+                </CardHeader>
+                {/* <CardBody>
+                  <div className="chart-area">
+                    <Bar
+                      data={chartExample3.data}
+                      options={chartExample3.options}
+                    />
+                  </div>
+                </CardBody> */}
+              </Card>
+            </Col>
+            <Col lg="4">
+              <Card className="card-chart">
+                <CardHeader>
+                  <h5 className="card-category">Deaths</h5>
+                  <CardTitle tag="h3">
+                    <i className="tim-icons icon-send text-success" /> {this.props.resWorld.deaths}
+                  </CardTitle>
+                </CardHeader>
+                {/* <CardBody>
+                  <div className="chart-area">
+                    <Line
+                      data={chartExample4.data}
+                      options={chartExample4.options}
+                    />
+                  </div>
+                </CardBody> */}
+              </Card>
+            </Col>
+          </Row>
           <Row>
             <Col xs="12">
               <Card className="card-chart">
@@ -151,72 +219,15 @@ class Dashboard extends React.Component {
                     </Col>
                   </Row>
                 </CardHeader>
-                <CardBody>
+                {/* <CardBody>
                   <div className="chart-area">
                     <Line
                       data={chartExample1[this.state.bigChartData]}
                       options={chartExample1.options}
                     />
                   </div>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col lg="4">
-              <Card className="card-chart">
-                <CardHeader>
-                  <h5 className="card-category">Total Shipments</h5>
-                  <CardTitle tag="h3">
-                    <i className="tim-icons icon-bell-55 text-info" />{" "}
-                    763,215
-                  </CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Line
-                      data={chartExample2.data}
-                      options={chartExample2.options}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col lg="4">
-              <Card className="card-chart">
-                <CardHeader>
-                  <h5 className="card-category">Daily Sales</h5>
-                  <CardTitle tag="h3">
-                    <i className="tim-icons icon-delivery-fast text-primary" />{" "}
-                    3,500€
-                  </CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Bar
-                      data={chartExample3.data}
-                      options={chartExample3.options}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col lg="4">
-              <Card className="card-chart">
-                <CardHeader>
-                  <h5 className="card-category">Completed Tasks</h5>
-                  <CardTitle tag="h3">
-                    <i className="tim-icons icon-send text-success" /> 12,100K
-                  </CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Line
-                      data={chartExample4.data}
-                      options={chartExample4.options}
-                    />
-                  </div>
-                </CardBody>
+                </CardBody> */}
+                <Map/> 
               </Card>
             </Col>
           </Row>
@@ -234,7 +245,7 @@ class Dashboard extends React.Component {
                       data-toggle="dropdown"
                       type="button"
                     >
-                      <i className="tim-icons icon-settings-gear-63" />
+                      {/* <i className="tim-icons icon-settings-gear-63" /> */}
                     </DropdownToggle>
                     <DropdownMenu aria-labelledby="dropdownMenuLink" right>
                       <DropdownItem
@@ -558,4 +569,22 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+	return {
+		resWorld: state.contReducer.responseWorld
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+    runWorldReq: () => dispatch(runCountryWiseData()),
+    runCountryWiseReq : () => dispatch(runWorldData())
+	};
+};
+
+// const mapDispatchToProps = dispatch => ({
+//   action1: some_payload => dispatch(action1(some_payload))
+//   action2: some_payload => dispatch(action2(some_payload))
+// })
+
+export default connect(mapStateToProps,mapDispatchToProps)(Dashboard);

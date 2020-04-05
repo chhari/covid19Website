@@ -29,6 +29,10 @@ import {
 } from "reactstrap";
 
 class Tables extends React.Component {
+
+
+
+
   render() {
     return (
       <>

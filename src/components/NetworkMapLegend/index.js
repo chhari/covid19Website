@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components'
 import {
     male_hosp,
@@ -14,7 +14,7 @@ import {
 const LegendContainer = styled.div`
     position: absolute;
     top: 0;
-    left: 30%;
+    left: 15%;
     display: flex;
     flex-direction: column;
     background: #fafafa;

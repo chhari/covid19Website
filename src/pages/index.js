@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import { initGA, logPageView } from '../util/googleAnalytics'
 
-import Dashboard from '../components/Dashboard'
+import Clusters from '../components/Dashboard'
 
 const Home = () => {
   useEffect(() => {
@@ -22,7 +22,7 @@ const Home = () => {
       </Head>
 
       <main>
-        <Dashboard />
+        <Clusters />
       </main>
 
       <style jsx global>{`
@@ -89,12 +89,12 @@ const Home = () => {
 
         .vis-button:after {
           font-size: 1.8em;
-          color: gray;
+          color: white;
         }
 
         .vis-button:hover:after {
           font-size: 1.8em;
-          color: lightgray;
+          color: red;
         }
 
         .vis-button.vis-zoomIn:after {

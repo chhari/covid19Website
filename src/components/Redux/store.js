@@ -10,16 +10,18 @@
 import { createStore, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import { combineReducers } from 'redux'
+
 //import storage from "redux-persist/lib/storage/session";
 // Reducers
 import rootReducer from './reducers'
+import countriesReducer from '../../redux/countries/countriesReducer'
 
 // Create the Redux store.
 
-const store =
-  process.env.NODE_ENV === 'production'
-    ? createStore(rootReducer, applyMiddleware(thunk))
-    : createStore(rootReducer, applyMiddleware(thunk, logger))
+const appReducer = combineReducers({rootSearch : rootReducer,contReducer:countriesReducer})
+const store = createStore(appReducer, composeWithDevTools(applyMiddleware(logger, thunk)));
 
 // Export the Redux store.
-export { store }
+export default store;

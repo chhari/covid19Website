@@ -16,8 +16,11 @@
 
 */
 import Dashboard from "views/Dashboard.js";
+import Clusters from "components/Dashboard";
 import Icons from "views/Icons.js";
 import Map from "views/Map.js";
+import Map3 from "views/Map3.js"
+import App from "views/App.js";
 import Notifications from "views/Notifications.js";
 import Rtl from "views/Rtl.js";
 import TableList from "views/TableList.js";
@@ -34,11 +37,19 @@ var routes = [
     layout: "/admin"
   },
   {
+    path: "/clusters",
+    name: "Clusters",
+    rtlName: "لوحة القيادة",
+    icon: "tim-icons icon-chart-pie-36",
+    component: Clusters,
+    layout: "/admin"
+  },
+  {
     path: "/icons",
-    name: "Icons",
+    name: "Map",
     rtlName: "الرموز",
     icon: "tim-icons icon-atom",
-    component: Icons,
+    component: App,
     layout: "/admin"
   },
   {
@@ -59,10 +70,10 @@ var routes = [
   },
   {
     path: "/user-profile",
-    name: "User Profile",
+    name: "Map3",
     rtlName: "ملف تعريفي للمستخدم",
     icon: "tim-icons icon-single-02",
-    component: UserProfile,
+    component: Map3,
     layout: "/admin"
   },
   {
