@@ -48,6 +48,7 @@ import {
   Col,
   UncontrolledTooltip
 } from "reactstrap";
+import { initGA, logPageView } from '../util/googleAnalytics'
 
 // core components
 import {
@@ -67,6 +68,11 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount(){
+    if (!window.GA_INITIALIZED) {
+      initGA()
+      window.GA_INITIALIZED = true
+    }
+    logPageView()
     this.props.runWorldReq();
     this.props.runCountryWiseReq();
   }
