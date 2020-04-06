@@ -151,7 +151,7 @@ const FilterPanel = ({
 }
 
 const mapStateToProps = state => {
-  const { patients, graph, filter, states } = state
+  const { patients, graph, filter, states } = state.rootReducer
   return { graph, patients, filter, states}
 }
 

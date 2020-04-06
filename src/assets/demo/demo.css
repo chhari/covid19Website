@@ -24,11 +24,11 @@
 }
 
 .typography-line {
-  padding-left: 25%;
+  padding-left: 10%;
   margin-bottom: 35px;
   position: relative;
   display: block;
-  width: 100%;
+  width: 50%;
 }
 
 .typography-line span {

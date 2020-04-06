@@ -15,12 +15,12 @@ import { combineReducers } from 'redux'
 
 //import storage from "redux-persist/lib/storage/session";
 // Reducers
-import rootReducer from './reducers'
+import rootReducer2 from './reducers'
 import countriesReducer from '../../redux/countries/countriesReducer'
 
 // Create the Redux store.
 
-const appReducer = combineReducers({rootSearch : rootReducer,contReducer:countriesReducer})
+const appReducer = combineReducers({rootReducer : rootReducer2,contReducer:countriesReducer})
 const store = createStore(appReducer, composeWithDevTools(applyMiddleware(logger, thunk)));
 
 // Export the Redux store.

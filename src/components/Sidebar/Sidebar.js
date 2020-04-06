@@ -58,53 +58,53 @@ class Sidebar extends React.Component {
     const { bgColor, routes, rtlActive, logo } = this.props;
     let logoImg = null;
     let logoText = null;
-    if (logo !== undefined) {
-      if (logo.outterLink !== undefined) {
-        logoImg = (
-          <a
-            href={logo.outterLink}
-            className="simple-text logo-mini"
-            target="_blank"
-            onClick={this.props.toggleSidebar}
-          >
-            <div className="logo-img">
-              <img src={logo.imgSrc} alt="react-logo" />
-            </div>
-          </a>
-        );
-        logoText = (
-          <a
-            href={logo.outterLink}
-            className="simple-text logo-normal"
-            target="_blank"
-            onClick={this.props.toggleSidebar}
-          >
-            {logo.text}
-          </a>
-        );
-      } else {
-        logoImg = (
-          <Link
-            to={logo.innerLink}
-            className="simple-text logo-mini"
-            onClick={this.props.toggleSidebar}
-          >
-            <div className="logo-img">
-              <img src={logo.imgSrc} alt="react-logo" />
-            </div>
-          </Link>
-        );
-        logoText = (
-          <Link
-            to={logo.innerLink}
-            className="simple-text logo-normal"
-            onClick={this.props.toggleSidebar}
-          >
-            {logo.text}
-          </Link>
-        );
-      }
-    }
+    // if (logo !== undefined) {
+    //   if (logo.outterLink !== undefined) {
+    //     logoImg = (
+    //       <a
+    //         href={logo.outterLink}
+    //         className="simple-text logo-mini"
+    //         target="_blank"
+    //         onClick={this.props.toggleSidebar}
+    //       >
+    //         <div className="logo-img">
+    //           <img src={logo.imgSrc} alt="react-logo" />
+    //         </div>
+    //       </a>
+    //     );
+    //     logoText = (
+    //       <a
+    //         href={logo.outterLink}
+    //         className="simple-text logo-normal"
+    //         target="_blank"
+    //         onClick={this.props.toggleSidebar}
+    //       >
+    //         {logo.text}
+    //       </a>
+    //     );
+    //   } else {
+    //     logoImg = (
+    //       <Link
+    //         to={logo.innerLink}
+    //         className="simple-text logo-mini"
+    //         onClick={this.props.toggleSidebar}
+    //       >
+    //         <div className="logo-img">
+    //           <img src={logo.imgSrc} alt="react-logo" />
+    //         </div>
+    //       </Link>
+    //     );
+    //     logoText = (
+    //       <Link
+    //         to={logo.innerLink}
+    //         className="simple-text logo-normal"
+    //         onClick={this.props.toggleSidebar}
+    //       >
+    //         {logo.text}
+    //       </Link>
+    //     );
+    //   }
+    //}
     return (
       <div className="sidebar" data={bgColor}>
         <div className="sidebar-wrapper" ref="sidebar">
@@ -140,12 +140,6 @@ class Sidebar extends React.Component {
             <li
               className="active-pro"
             >
-              <ReactstrapNavLink
-                href="https://www.creative-tim.com/product/black-dashboard-pro-react?ref=bdr-user-archive-sidebar-upgrade-pro"
-              >
-                <i className="tim-icons icon-spaceship" />
-                <p>Upgrade to PRO</p>
-              </ReactstrapNavLink>
             </li>
           </Nav>
         </div>

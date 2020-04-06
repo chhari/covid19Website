@@ -16,6 +16,7 @@
 
 */
 import React from "react";
+import { connect } from 'react-redux'
 
 // reactstrap components
 import {
@@ -30,7 +31,31 @@ import {
 
 class Tables extends React.Component {
 
+  createHeaderComponents(){
+    let countries = this.props.resCountries;
+    let headerComponentList = [];
+    Object.keys(countries[0]().map((k,i)=>{
+      console.log(k)
+      headerComponentList.push(<th>{k}}</th>)
+    }))
+    console.log(headerComponentList)
 
+    return headerComponentList.length > 0 ? headerComponentList : [] 
+
+  }
+
+  createBodyComponents(){
+    let countries = this.props.resCountries;
+    console.log(countries)
+    let bodyComponentsList = [];
+    countries.map(k => {
+      Object.keys(k).map(key => bodyComponentsList.push(<tb>k[key]</tb>))
+
+    })
+    console.log(bodyComponentsList)
+    return bodyComponentsList.length > 0 ? bodyComponentsList : []
+
+  }
 
 
   render() {
@@ -47,119 +72,25 @@ class Tables extends React.Component {
                   <Table className="tablesorter" responsive>
                     <thead className="text-primary">
                       <tr>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th className="text-center">Salary</th>
+                      <th>Country</th>
+                        <th>Cases</th>
+                        <th>Recovered</th>
+                        <th>TodayCases</th>
+                        <th>Active</th>
+                        <th>Critical</th>
+                        <th className="text-center">Deaths</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Dakota Rice</td>
-                        <td>Niger</td>
-                        <td>Oud-Turnhout</td>
-                        <td className="text-center">$36,738</td>
-                      </tr>
-                      <tr>
-                        <td>Minerva Hooper</td>
-                        <td>Curaçao</td>
-                        <td>Sinaai-Waas</td>
-                        <td className="text-center">$23,789</td>
-                      </tr>
-                      <tr>
-                        <td>Sage Rodriguez</td>
-                        <td>Netherlands</td>
-                        <td>Baileux</td>
-                        <td className="text-center">$56,142</td>
-                      </tr>
-                      <tr>
-                        <td>Philip Chaney</td>
-                        <td>Korea, South</td>
-                        <td>Overland Park</td>
-                        <td className="text-center">$38,735</td>
-                      </tr>
-                      <tr>
-                        <td>Doris Greene</td>
-                        <td>Malawi</td>
-                        <td>Feldkirchen in Kärnten</td>
-                        <td className="text-center">$63,542</td>
-                      </tr>
-                      <tr>
-                        <td>Mason Porter</td>
-                        <td>Chile</td>
-                        <td>Gloucester</td>
-                        <td className="text-center">$78,615</td>
-                      </tr>
-                      <tr>
-                        <td>Jon Porter</td>
-                        <td>Portugal</td>
-                        <td>Gloucester</td>
-                        <td className="text-center">$98,615</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col md="12">
-              <Card className="card-plain">
-                <CardHeader>
-                  <CardTitle tag="h4">Table on Plain Background</CardTitle>
-                  <p className="category">Here is a subtitle for this table</p>
-                </CardHeader>
-                <CardBody>
-                  <Table className="tablesorter" responsive>
-                    <thead className="text-primary">
-                      <tr>
-                        <th>Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th className="text-center">Salary</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Dakota Rice</td>
-                        <td>Niger</td>
-                        <td>Oud-Turnhout</td>
-                        <td className="text-center">$36,738</td>
-                      </tr>
-                      <tr>
-                        <td>Minerva Hooper</td>
-                        <td>Curaçao</td>
-                        <td>Sinaai-Waas</td>
-                        <td className="text-center">$23,789</td>
-                      </tr>
-                      <tr>
-                        <td>Sage Rodriguez</td>
-                        <td>Netherlands</td>
-                        <td>Baileux</td>
-                        <td className="text-center">$56,142</td>
-                      </tr>
-                      <tr>
-                        <td>Philip Chaney</td>
-                        <td>Korea, South</td>
-                        <td>Overland Park</td>
-                        <td className="text-center">$38,735</td>
-                      </tr>
-                      <tr>
-                        <td>Doris Greene</td>
-                        <td>Malawi</td>
-                        <td>Feldkirchen in Kärnten</td>
-                        <td className="text-center">$63,542</td>
-                      </tr>
-                      <tr>
-                        <td>Mason Porter</td>
-                        <td>Chile</td>
-                        <td>Gloucester</td>
-                        <td className="text-center">$78,615</td>
-                      </tr>
-                      <tr>
-                        <td>Jon Porter</td>
-                        <td>Portugal</td>
-                        <td>Gloucester</td>
-                        <td className="text-center">$98,615</td>
-                      </tr>
+                    {this.props.resCountries.length > 0  ? this.props.resCountries
+                      .map(key => key ? <tr>
+                        <td>{key.country}</td>
+                        <td>{key.cases}</td>
+                        <td>{key.recovered}</td>
+                        <td>{key.todayCases}</td>
+                        <td>{key.active}</td>
+                        <td>{key.critical}</td>
+                        <td className="text-center">{key.deaths}</td> </tr>:<tr></tr>) : <tr></tr>}
                     </tbody>
                   </Table>
                 </CardBody>
@@ -170,6 +101,16 @@ class Tables extends React.Component {
       </>
     );
   }
+  
 }
 
-export default Tables;
+const mapStateToProps = (state) => {
+	return {
+    resWorld: state.contReducer.responseWorld,
+    resCountries : state.contReducer.response
+    
+	}
+}
+
+
+export default connect(mapStateToProps)(Tables);

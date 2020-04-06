@@ -1,9 +1,10 @@
 import React , {useEffect,useState} from "react";
 import { geoCentroid } from "d3-geo";
+import { Tooltip, TooltipArrow, TooltipInner } from 'styled-tooltip-component'
 import { useSelector, useDispatch } from 'react-redux';
 import { scaleQuantile } from "d3-scale";
 import { csv } from "d3-fetch";
-import states from '../images/csv_data'
+import states from './us-states.csv'
 import {ComposableMap,
   Geographies,
   Geography,
@@ -15,7 +16,7 @@ import {ComposableMap,
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 
-const Map3 = () => {
+const MyMap = () => {
 
     const [data, setData] = useState([]);
     const [hidden, setHidden] = useState(true);
@@ -36,7 +37,7 @@ const Map3 = () => {
       
       useEffect(() => {
           // https://www.bls.gov/lau/
-          csv("/us-states.csv").then(states => {
+          csv(states).then(states => {
             let finalData = states.filter(state => state.date === "2020-03-29")  
             setData(finalData);
           });
@@ -66,6 +67,7 @@ const Map3 = () => {
       
     
   return (
+    <div className="content">  
     <ComposableMap projection="geoAlbersUsa">
       <Geographies geography={geoUrl}>
         {({ geographies }) => (
@@ -134,7 +136,18 @@ const Map3 = () => {
         )}
       </Geographies>
     </ComposableMap>
+    <Tooltip
+        hidden={hidden}
+        style={{
+            top: `${(toolTipPosition && toolTipPosition.top) || 0}px`,
+            left: `${(toolTipPosition && toolTipPosition.left) || 0}px`,
+          }} 
+      >
+        <TooltipArrow bottom />
+        <TooltipInner right>{tooltipContent}</TooltipInner>
+      </Tooltip>
+    </div>
   );
 };
 
-export default Map3;
+export default MyMap;

@@ -22,7 +22,7 @@ const SidePanel = ({ patient, lastRefreshed }) => {
 }
 
 const mapStateToProps = state => {
-  const { patient, lastRefreshed } = state
+  const { patient, lastRefreshed } = state.rootReducer
   return { patient, lastRefreshed }
 }
 

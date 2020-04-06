@@ -7,6 +7,9 @@ import { rowsToGraph, letterToCode } from '../../util/parse'
 import normalize from '../../util/normalize'
 import DatePicker from '../DatePicker'
 import NetworkMapLegend from '../NetworkMapLegend'
+import Api from '../../api/Api'
+import {Button} from "reactstrap";
+
 
 const NetworkMap = ({
   filter,
@@ -49,16 +52,12 @@ const NetworkMap = ({
   })
 
   useEffect(() => {
-    fetch('https://api.rootnet.in/covid19-in/unofficial/covid19india.org', {
-      cors: 'no-cors',
-      method: 'GET',
-      redirect: 'follow',
-    })
-      .then(resp => resp.json())
+    Api.getTestData()
       .then(res => {
-        updateGraph(rowsToGraph(res.data.rawPatientData))
-        updatePatients(normalize(res.data.rawPatientData))
-        updateLastRefreshed(res.data.lastRefreshed)
+        console.log(res)
+        updateGraph(rowsToGraph(res.data.data.rawPatientData))
+        updatePatients(normalize(res.data.data.rawPatientData))
+        updateLastRefreshed(res.data.data.lastRefreshed)
         setIsLoading(false)
       })
       .catch(err => console.log('error', err))
@@ -149,9 +148,27 @@ const NetworkMap = ({
     },
   }
 
+  const myLoading = true;
   return (
     <div style={{ height: '100vh', width: '100vw' }}>
-      {isLoading ? null : (
+      {myLoading ? <div className="typography-line">
+                    <blockquote>
+                      <p className="blockquote blockquote-primary">
+                        "Clusters Map is currently in process will Update the page when we have complete Data.
+                        For more info on what Data is being used please visit the about page "{" "}
+                        <br />
+                        <br />
+                        <small>- Thank You</small>
+                      </p>
+                      <Button
+                              block
+                              color="primary"
+                              onClick={() => this.notify("tl")}
+                            >
+                              About Page
+                            </Button>
+                    </blockquote>
+                  </div> : (
         <>
           <NetworkMapLegend currentFilter={filter} />
           <Graph
@@ -179,8 +196,8 @@ const NetworkMap = ({
   )
 }
 
-const mapStateToProps = state => {
-  let { graph, searchTerm, filter, states } = state
+const mapStateToProps = (state) => {
+  let { graph, searchTerm, filter, states } = state.rootReducer
   return { graph, searchTerm, filter, states}
 }
 

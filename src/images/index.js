@@ -5,7 +5,7 @@ import female_cured from './female/cured.png'
 import female_dead from './female/dead.png'
 import female_hosp from './female/hospitalized.png'
 import csv_data from './female/us-counties.csv'
-import csv_data_states from './female/us-states.csv'
+//import my_states from './female/us-states.csv'
 
 import abroad from './filter/abroad.png'
 import state from './filter/state.png'
@@ -25,7 +25,6 @@ export {
   female_dead,
   female_hosp,
   csv_data,
-  csv_data_states,
   state,
   city,
   state_node,

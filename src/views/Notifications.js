@@ -18,6 +18,9 @@
 import React from "react";
 // react plugin for creating notifications over the dashboard
 import NotificationAlert from "react-notification-alert";
+import styled from 'styled-components'
+
+
 
 // reactstrap components
 import {
@@ -31,6 +34,12 @@ import {
   Row,
   Col
 } from "reactstrap";
+
+
+const Anchor = styled.a`
+   color: white
+
+  `
 
 class Notifications extends React.Component {
   notify = place => {
@@ -72,6 +81,9 @@ class Notifications extends React.Component {
     };
     this.refs.notificationAlert.notificationAlert(options);
   };
+
+  
+
   render() {
     return (
       <>
@@ -80,7 +92,7 @@ class Notifications extends React.Component {
             <NotificationAlert ref="notificationAlert" />
           </div>
           <Row>
-            <Col md="6">
+            {/* <Col md="6">
               <Card>
                 <CardHeader>
                   <CardTitle tag="h4">Notifications Style</CardTitle>
@@ -115,41 +127,50 @@ class Notifications extends React.Component {
                   </UncontrolledAlert>
                 </CardBody>
               </Card>
-            </Col>
-            <Col md="6">
+            </Col> */}
+            <Col md="12">
               <Card>
                 <CardHeader>
-                  <CardTitle tag="h4">Notification states</CardTitle>
+                  <CardTitle tag="h4">Info on Data</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <UncontrolledAlert color="primary">
+                    <Anchor href="https://github.com/nytimes/covid-19-data">
                     <span>
-                      <b>Primary - </b>
-                      This is a regular notification made with ".alert-primary"
+                      <b>States and Countres Data -  </b>
+                      The data for covid19 cases for individual state and county is from New York Times , updates everyday.Access the data from their Github page https://github.com/nytimes/covid-19-data
+                      , click here to go there
                     </span>
+                    </Anchor>
                   </UncontrolledAlert>
                   <UncontrolledAlert color="info">
+                  <Anchor href="https://www.worldometers.info/coronavirus/">
                     <span>
-                      <b>Info - </b>
-                      This is a regular notification made with ".alert-info"
+                      <b>World Data :  </b>
+                      World data is accessed from an open API that gets its data from Worldometer website ."https://www.worldometers.info/coronavirus/" 
                     </span>
+                    </Anchor>
                   </UncontrolledAlert>
                   <UncontrolledAlert color="success">
+                    <Anchor href="cdc.gov">
                     <span>
-                      <b>Success - </b>
-                      This is a regular notification made with ".alert-success"
+                      <b>Visit CDC.gov for more info on prevention and cure  : </b>
+                      For more current info on corona virus and its impact and prevention , please visit Center for Disease Controls website "cdc.gov"
                     </span>
+                    </Anchor>
                   </UncontrolledAlert>
                   <UncontrolledAlert color="warning">
+                    <Anchor href="https://www.google.com/covid19/">
                     <span>
-                      <b>Warning - </b>
-                      This is a regular notification made with ".alert-warning"
+                      <b>Other info on symptoms </b>
+                      Google.com provides these data , please vist google's covid19 website "google.com/covid19/"
                     </span>
+                    </Anchor>
                   </UncontrolledAlert>
                   <UncontrolledAlert color="danger">
                     <span>
-                      <b>Danger - </b>
-                      This is a regular notification made with ".alert-danger"
+                      <b>Note -  </b>
+                      Please protect yourself and your loved ones from the disease ,we'll provide upto data stats and keep you updated .Click on the above links to be redirected to respoective sites
                     </span>
                   </UncontrolledAlert>
                 </CardBody>
@@ -160,10 +181,18 @@ class Notifications extends React.Component {
                 <CardBody>
                   <div className="places-buttons">
                     <Row>
-                      <Col className="ml-auto mr-auto text-center" md="6">
+                      <Col  md="12">
                         <CardTitle tag="h4">
-                          Notifications Places<p className="category">
-                            Click to view notifications
+                          Acknowledgments<br></br>
+                          <p></p>
+                          <p className="category">
+                            The website has been made using data from New York Times and Worldomer. Thier respective links have been mentioned above. 
+                          </p><br></br>
+                          <p className="category">
+                            The worldometer data is accessed through <Anchor href="https://github.com/javieraviles/covidAPI">"https://github.com/javieraviles/covidAPI"</Anchor> api from a developer . 
+                          </p><br></br>
+                          <p className="category">
+                            The website is made using ReactJS , maps are done using react-simple-maps . The template is from Creative Tim <Anchor href = "https://www.creative-tim.com/product/black-dashboard">"https://www.creative-tim.com/product/black-dashboard"</Anchor>
                           </p>
                         </CardTitle>
                       </Col>

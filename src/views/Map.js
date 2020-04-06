@@ -3,7 +3,8 @@ import { ComposableMap, Geographies, Geography,ZoomableGroup } from "react-simpl
 import { scaleQuantile } from "d3-scale";
 import { csv } from "d3-fetch";
 import { Tooltip, TooltipArrow, TooltipInner } from 'styled-tooltip-component'
-import { csv_data } from "../images/index";
+//import { csv_data } from "../images/index";
+import csv_data from "./us-counties.csv"
 import { func } from "prop-types";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
@@ -18,21 +19,13 @@ const Map = (setTooltipContent) => {
   useEffect(() => {
     // https://www.bls.gov/lau/
     csv(csv_data).then(counties => {
-      let finalData = counties.filter(county => county.date === "2020-03-29")  
+      let finalData = counties.filter(county => county.date === "2020-04-04")  
       setData(finalData);
     });
 
   }, []);
 
   const rounded = num => {
-    // if (num > 1000000000) {
-    //   return Math.round(num / 100000000) / 10 + "Bn";
-    // } else if (num > 1000000) {
-    //   return Math.round(num / 100000) / 10 + "M";
-    // } else {
-    //   return Math.round(num / 100) / 10 + "K";
-    // }
-
     if(num){
         return num 
     }
@@ -78,8 +71,8 @@ const Map = (setTooltipContent) => {
                     setToolTipContent(`${name} — ${cur ? cur.cases : "0"}`)  
                     setHidden(false);
                     setToolTipPosition({
-                        top: event.clientY,
-                        left: event.clientX
+                        top: event.pageY,
+                        left: event.pageX
                       })
                   }}
                   onMouseLeave={() => {

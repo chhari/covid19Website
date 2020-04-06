@@ -19,7 +19,7 @@ const initialState = {
 }
 
 // Export the Device Reducer.
-const rootReducer =  (state = initialState, action) => {
+const rootReducer2 =  (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SELECT_FILTER: {
       const { filter } = action.payload
@@ -64,4 +64,4 @@ const rootReducer =  (state = initialState, action) => {
 }
 
 
-export default rootReducer;
+export default rootReducer2;
