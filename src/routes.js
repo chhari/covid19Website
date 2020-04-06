@@ -58,7 +58,7 @@ var routes = [
     name: "US Statewise Map",
     rtlName: "خرائط",
     icon: "tim-icons icon-bank",
-    component: Map,
+    component: MyMap,
     layout: "/admin"
   },
   {
@@ -66,7 +66,7 @@ var routes = [
     name: "countywise map",
     rtlName: "ملف تعريفي للمستخدم",
     icon: "tim-icons icon-pin",
-    component: MyMap,
+    component: Map,
     layout: "/admin"
   },
   {
