@@ -5,6 +5,9 @@ import { csv } from "d3-fetch";
 import { Tooltip, TooltipArrow, TooltipInner } from 'styled-tooltip-component'
 //import { csv_data } from "../images/index";
 import csv_data from "./us-counties.csv"
+
+
+
 import { func } from "prop-types";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
@@ -12,6 +15,7 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 
 const Map = (setTooltipContent) => {
   const [data, setData] = useState([]);
+  const [content, setContent] = useState("");
   const [hidden, setHidden] = useState(true);
   const [toolTipPosition, setToolTipPosition] = useState(null)
   const [tooltipContent, setToolTipContent] = useState('')
@@ -53,6 +57,9 @@ const Map = (setTooltipContent) => {
 
   return (
     <div className ="content">
+      <div className="ml-auto mr-auto text-center" md="6">
+      <h3>{content}</h3>
+      </div>
       <ComposableMap projection="geoAlbersUsa">
       <ZoomableGroup zoom={1}>
         <Geographies geography={geoUrl}>
@@ -67,7 +74,7 @@ const Map = (setTooltipContent) => {
 
                   onMouseEnter={(event) => {
                     const { name} = geo.properties;
-                    console.log(`${name} — ${cur ? cur.cases : "0"}`)
+                    setContent(`${name} — ${cur ? cur.cases : "0"}`)
                     setToolTipContent(`${name} — ${cur ? cur.cases : "0"}`)  
                     setHidden(false);
                     setToolTipPosition({

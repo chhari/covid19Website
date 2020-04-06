@@ -197,72 +197,7 @@ class Notifications extends React.Component {
                         </CardTitle>
                       </Col>
                     </Row>
-                    <Row>
-                      <Col className="ml-auto mr-auto" lg="8">
-                        <Row>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("tl")}
-                            >
-                              Top Left
-                            </Button>
-                          </Col>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("tc")}
-                            >
-                              Top Center
-                            </Button>
-                          </Col>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("tr")}
-                            >
-                              Top Right
-                            </Button>
-                          </Col>
-                        </Row>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className="ml-auto mr-auto" lg="8">
-                        <Row>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("bl")}
-                            >
-                              Bottom Left
-                            </Button>
-                          </Col>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("bc")}
-                            >
-                              Bottom Center
-                            </Button>
-                          </Col>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("br")}
-                            >
-                              Bottom Right
-                            </Button>
-                          </Col>
-                        </Row>
-                      </Col>
-                    </Row>
+        
                   </div>
                 </CardBody>
               </Card>

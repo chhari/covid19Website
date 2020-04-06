@@ -19,6 +19,7 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 const MyMap = () => {
 
     const [data, setData] = useState([]);
+    const [content, setContent] = useState("");
     const [hidden, setHidden] = useState(true);
     const [toolTipPosition, setToolTipPosition] = useState(null)
   const [tooltipContent, setToolTipContent] = useState('')
@@ -68,6 +69,9 @@ const MyMap = () => {
     
   return (
     <div className="content">  
+    <div className="ml-auto mr-auto text-center" md="6">
+      <h3>{content}</h3>
+      </div>
     <ComposableMap projection="geoAlbersUsa">
       <Geographies geography={geoUrl}>
         {({ geographies }) => (
@@ -80,7 +84,7 @@ const MyMap = () => {
                 fill={getValue(geo.id) ? colorScale(getValue(geo.id)) : "#EEE"}
                 onMouseEnter={(event) => {
                     const { name} = geo.properties;
-                    console.log(`${name} — ${getValue(geo.id) ? getValue(geo.id) : "0"}`)
+                    setContent(`${name} — ${getValue(geo.id) ? getValue(geo.id) : "0"}`)  
                     setToolTipContent(`${name} — ${getValue(geo.id) ? getValue(geo.id) : "0"}`)  
                     setHidden(false);
                     setToolTipPosition({

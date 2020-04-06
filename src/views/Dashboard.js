@@ -72,6 +72,7 @@ class Dashboard extends React.Component {
   }
 
   countries = ["USA","Spain","Italy","Germany","France","Iran","UK","China","India"]
+  us = ["USA"]
 
   renderMap = () => {
     
@@ -113,6 +114,8 @@ class Dashboard extends React.Component {
     
   }
 
+  usa = []
+
   getHeadertitle = () =>{
     if(this.state.map === "World"){
       let myVar = "Total Cases in World: " 
@@ -122,16 +125,18 @@ class Dashboard extends React.Component {
 
     }else if(this.state.map === "States"){
       let myVar =  "State wise Cases in USA: "
-      let myVar2 =  this.props.resCountries.length > 0  ? this.props.resCountries
-        .filter(k => this.countries.includes("USA")).map((k) => {return k.cases}) : "data not avaible"
-     let myVar3 =  myVar 
+      let myVar2 = this.props.resCountries.length > 0  ? this.props.resCountries
+        .filter(k => this.us.includes(k.country))
+        .map(key => {return key.cases}) : "no data availble"
+     let myVar3 =  myVar + myVar2
      return myVar3
 
     }else if (this.state.map === "Counties" ){
       let myVar =  "County wise Cases in USA: "
-      let myVar2 =  this.props.resCountries.length > 0  ? this.props.resCountries
-        .filter(k => this.countries.includes("USA")).cases : "data not avaible"
-     let myVar3 =  myVar 
+      let myVar2 = this.props.resCountries.length > 0  ? this.props.resCountries
+        .filter(k => this.us.includes(k.country))
+        .map(key => {return key.cases}) : "no data availble"
+     let myVar3 =  myVar + myVar2
      return myVar3
 
     }else{
@@ -219,7 +224,7 @@ class Dashboard extends React.Component {
                         <Button
                           tag="label"
                           className={classNames("btn-simple", {
-                            active: this.state.bigChartData === "data1"
+                            active: this.state.map === "World"
                           })}
                           color="info"
                           id="0"
@@ -245,7 +250,7 @@ class Dashboard extends React.Component {
                           size="sm"
                           tag="label"
                           className={classNames("btn-simple", {
-                            active: this.state.bigChartData === "data2"
+                            active: this.state.map === "States"
                           })}
                           onClick={() => this.setMap("States")}
                         >
@@ -267,7 +272,7 @@ class Dashboard extends React.Component {
                           size="sm"
                           tag="label"
                           className={classNames("btn-simple", {
-                            active: this.state.bigChartData === "data3"
+                            active: this.state.map === "Counties"
                           })}
                           onClick={() => this.setMap("Counties")}
                         >
@@ -329,7 +334,7 @@ class Dashboard extends React.Component {
                 <CardHeader>
                   <Link to="/admin/tables">
                 <Button block color="primary">
-                     World List (click here for complete world list)
+                     World List (click for complete world list)
                   </Button>
                   </Link>
                 </CardHeader>
