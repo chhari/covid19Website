@@ -337,9 +337,11 @@ class Dashboard extends React.Component {
                       <th>Country</th>
                         <th>Cases</th>
                         <th>Recovered</th>
-                        <th>Active</th>
+                        <th>TodayCases</th>
+                        <th>TodayDeaths</th> 
+                        <th>Deaths</th>
                         <th>Critical</th>
-                        <th className="text-center">Deaths</th>
+                        <th className="text-center">Active</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -349,9 +351,11 @@ class Dashboard extends React.Component {
                         <td>{key.country}</td>
                         <td>{key.cases}</td>
                         <td>{key.recovered}</td>
-                        <td>{key.active}</td>
+                        <td>+{key.todayCases}</td>
+                        <td>+{key.todayDeaths}</td>
+                        <td>{key.deaths}</td>
                         <td>{key.critical}</td>
-                        <td className="text-center">{key.deaths}</td> </tr>:<tr></tr>) : <tr></tr>}
+                      <td className="text-center">{key.active}</td> </tr>:<tr></tr>) : <tr></tr>}
                     </tbody>
                   </Table>
                 </CardBody>

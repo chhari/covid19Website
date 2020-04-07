@@ -76,9 +76,10 @@ class Tables extends React.Component {
                         <th>Cases</th>
                         <th>Recovered</th>
                         <th>TodayCases</th>
+                        <th>Deaths</th>
+                        <th>TodayDeaths</th> 
                         <th>Active</th>
-                        <th>Critical</th>
-                        <th className="text-center">Deaths</th>
+                        <th className="text-center">Critical</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -88,9 +89,10 @@ class Tables extends React.Component {
                         <td>{key.cases}</td>
                         <td>{key.recovered}</td>
                         <td>{key.todayCases}</td>
+                        <td>{key.deaths}</td>
+                        <td>{key.todayDeaths}</td>
                         <td>{key.active}</td>
-                        <td>{key.critical}</td>
-                        <td className="text-center">{key.deaths}</td> </tr>:<tr></tr>) : <tr></tr>}
+                        <td className="text-center">{key.critical}</td> </tr>:<tr></tr>) : <tr></tr>}
                     </tbody>
                   </Table>
                 </CardBody>
