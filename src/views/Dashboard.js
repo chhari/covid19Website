@@ -36,27 +36,13 @@ import {
   CardHeader,
   CardBody,
   CardTitle,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  Label,
-  FormGroup,
-  Input,
   Table,
   Row,
   Col,
-  UncontrolledTooltip
 } from "reactstrap";
 import { initGA, logPageView } from '../util/googleAnalytics'
 
 // core components
-import {
-  chartExample1,
-  chartExample2,
-  chartExample3,
-  chartExample4
-} from "variables/charts.js";
 
 class Dashboard extends React.Component {
   constructor(props) {
