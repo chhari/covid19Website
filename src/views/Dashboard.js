@@ -336,10 +336,10 @@ class Dashboard extends React.Component {
                       <tr>
                       <th>Country</th>
                         <th>Cases</th>
-                        <th>Recovered</th>
                         <th>TodayCases</th>
-                        <th>TodayDeaths</th> 
                         <th>Deaths</th>
+                        <th>TodayDeaths</th> 
+                        <th>Recovered</th>
                         <th>Critical</th>
                         <th className="text-center">Active</th>
                       </tr>
@@ -349,11 +349,11 @@ class Dashboard extends React.Component {
                       .filter(k => this.countries.includes(k.country))
                       .map(key => key ? <tr>
                         <td>{key.country}</td>
-                        <td>{key.cases}</td>
+                        <td style={{ backgroundColor: "#1d8cf8" }}>{key.cases}</td>
+                        <td >+{key.todayCases}</td>
+                        <td style={{ backgroundColor: 'red' }}>{key.deaths}</td>
+                        <td >+{key.todayDeaths}</td>
                         <td>{key.recovered}</td>
-                        <td>+{key.todayCases}</td>
-                        <td>+{key.todayDeaths}</td>
-                        <td>{key.deaths}</td>
                         <td>{key.critical}</td>
                       <td className="text-center">{key.active}</td> </tr>:<tr></tr>) : <tr></tr>}
                     </tbody>
