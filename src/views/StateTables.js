@@ -100,4 +100,4 @@ class StateTables extends React.Component {
 
 
 
-export default CountyTables;
+export default StateTables;

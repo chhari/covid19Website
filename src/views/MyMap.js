@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { scaleQuantile } from "d3-scale";
 import { csv } from "d3-fetch";
 import states from './us-states.csv'
+import StateTables from './StateTables'
 import {ComposableMap,
   Geographies,
   Geography,
@@ -154,6 +155,8 @@ const MyMap = () => {
         <TooltipArrow bottom />
         <TooltipInner right>{tooltipContent}</TooltipInner>
       </Tooltip>
+    <StateTables myData ={data}/>
+
     </div>
   );
 };
