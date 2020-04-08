@@ -5,7 +5,7 @@ import { csv } from "d3-fetch";
 import { Tooltip, TooltipArrow, TooltipInner } from 'styled-tooltip-component'
 import CountyTables from './CountyTables.js'
 //import { csv_data } from "../images/index";
-import csv_data from "../data/covid-19-data/us-counties.csv"
+import csv_data from "./us-counties.csv"
 
 
 

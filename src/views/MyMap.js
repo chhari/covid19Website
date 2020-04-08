@@ -4,7 +4,7 @@ import { Tooltip, TooltipArrow, TooltipInner } from 'styled-tooltip-component'
 import { useSelector, useDispatch } from 'react-redux';
 import { scaleQuantile } from "d3-scale";
 import { csv } from "d3-fetch";
-import states from '../data/covid-19-data/us-states.csv'
+import states from './us-states.csv'
 import {ComposableMap,
   Geographies,
   Geography,
