@@ -127,7 +127,7 @@ const Map = (setTooltipContent) => {
         <TooltipArrow bottom />
         <TooltipInner right>{tooltipContent}</TooltipInner>
       </Tooltip>
-      <CountyTables myData ={data}/>
+      {/* <CountyTables myData ={data}/> */}
     </div>
   );
 };
