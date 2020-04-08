@@ -4,7 +4,7 @@ import { Tooltip, TooltipArrow, TooltipInner } from 'styled-tooltip-component'
 import { useSelector, useDispatch } from 'react-redux';
 import { scaleQuantile } from "d3-scale";
 import { csv } from "d3-fetch";
-import states from './us-states.csv'
+import states from '../data/covid-19-data/us-states.csv'
 import {ComposableMap,
   Geographies,
   Geography,
@@ -20,6 +20,7 @@ const MyMap = () => {
 
     const [data, setData] = useState([]);
     const [content, setContent] = useState("");
+    const[date,setDate] = useState("");
     const [hidden, setHidden] = useState(true);
     const [toolTipPosition, setToolTipPosition] = useState(null)
   const [tooltipContent, setToolTipContent] = useState('')
@@ -39,7 +40,9 @@ const MyMap = () => {
       useEffect(() => {
           // https://www.bls.gov/lau/
           csv(states).then(states => {
-            let finalData = states.filter(state => state.date === "2020-03-29")  
+            let lastDate = states.pop().date
+            setDate("last refreshed: " + lastDate)
+            let finalData = states.filter(state => state.date === lastDate)  
             setData(finalData);
           });
       
@@ -71,6 +74,7 @@ const MyMap = () => {
     <div className="content">  
     <div className="ml-auto mr-auto text-center" md="6">
       <h3>{content}</h3>
+      <p>{date}</p>
       </div>
     <ComposableMap projection="geoAlbersUsa">
       <Geographies geography={geoUrl}>

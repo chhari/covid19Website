@@ -384,7 +384,7 @@ class Dashboard extends React.Component {
                             </Link>
                           </Col>
                           <Col md="4">
-                          <Link to="/admin/usmap">
+                          <Link to="/admin/countymap">
                             <Button
                               block
                               color="primary"
