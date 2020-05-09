@@ -13,6 +13,8 @@ import { func } from "prop-types";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json";
 
+const csv_d = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv"
+
 
 const Map = (setTooltipContent) => {
   const [data, setData] = useState([]);
@@ -24,7 +26,7 @@ const Map = (setTooltipContent) => {
 
   useEffect(() => {
     // https://www.bls.gov/lau/
-    csv(csv_data).then(counties => {
+    csv(csv_d).then(counties => {
       let lastDate = counties.pop().date
       setDate("last refreshed: " + lastDate)
       let finalData = counties.filter(county => county.date === lastDate)  

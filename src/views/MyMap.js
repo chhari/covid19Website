@@ -37,10 +37,12 @@ const MyMap = () => {
         MD: [47, 10],
         DC: [49, 21]
       };
+
+      const csv_d = "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv"
       
       useEffect(() => {
           // https://www.bls.gov/lau/
-          csv(states).then(states => {
+          csv(csv_d).then(states => {
             let lastDate = states.pop().date
             setDate("last refreshed: " + lastDate)
             let finalData = states.filter(state => state.date === lastDate)  
